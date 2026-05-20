@@ -1,24 +1,45 @@
-import {View, Text, Image, StyleSheet, TouchableOpacity,SafeAreaView, StatusBar} from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 export default function App() {
   return (
     <SafeAreaView>
-      <StatusBar>
+      <StatusBar />
+      <View>
         <View>
-          <View>
-            <Image/>
-            <Text>McDonald's</Text>
-          </View>
-          <View>
-            <Text>Seja Bem-vindo!</Text>
-            <Text>O que você gostaria de pedir hoje?</Text>
-          </View>
+          <Image />
+          <Text>McDonald's</Text>
         </View>
-      </StatusBar>
+        <View>
+          <Text>Seja Bem-vindo!</Text>
+          <Text>O que você gostaria de pedir hoje?</Text>
+        </View>
+        <View>
+          <TouchableOpacity>
+            <View>
+              <MaterialCommunityIcons
+              name="hamburger"
+              />
+            </View>  
+            <View>
+              <Text>Para comer aqui</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <View>
+              <Feather name="shopping-bag"/>
+              </View>
+            <View>
+              <Text>Para levar</Text>
+            </View>
+              </TouchableOpacity>
+      </View>
+      </View>
     </SafeAreaView>
   )
 }
 const styles = StyleSheet.create({
-  safeArea:{
+  safeArea: {
 
   },
   container: {
