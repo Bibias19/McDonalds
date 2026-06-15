@@ -21,28 +21,28 @@ const combos = [
         name: 'McOferta Média Big Mac Duplo',
         description: 'O clássico Big Mac, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 39,90',
-        image: require('../assets/images/images/combo-big-mac-duplo.png')
+        image: require('../images/combo-big-mac-duplo.png')
     },
     {
         id: 2,
         name: 'Novo Brabo Melt Onion Ring',
         description: 'Delicioso hambúrguer com anéis de cebola crocantes, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 41,50',
-        image: require('../assets/images/images/images/combo-brabo-melt-onion-rings.png'),
+        image: require('../images/combo-brabo-melt-onion-rings.png'),
     },
     {
         id: 3,
         name: 'McCrispy Chicken Elite',
         description: 'Saboroso hambúrguer de frango crispy, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 39,90',
-        image: require('../assets/images/images/images/combo-mcrispy-elite.png'),
+        image: require('../images/combo-mcrispy-elite.png'),
     },
     {
         id: 4,
         name: 'Duplo Cheddar McMelt',
         description: 'Hambúrguer suculento com cheddar derretido, acompanhado de batatas médias e uma bebida média.',
         price: 'R$ 36,20',
-        image: require('../assets/images/images/images/combo-duplo-cheddar-mcmelt.png'),
+        image: require('../images/combo-duplo-cheddar-mcmelt.png'),
     },
 ];
  
@@ -164,28 +164,48 @@ export default function MenuScreen({ navigation }: Props) {
  
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
+        backgroundColor: '#F2F2F2',
  
     },
     scroll: {
- 
+        flex: 1,
     },
     scrollContent: {
- 
+        paddingBottom: 32,
     },
     headerImageWrapper: {
- 
+        width: '100%',
+        height: 240,
+        position: 'relative',
+        backgroundColor: '#000',
     },
     headerImage: {
+        width: '100%',
+        height: '100%',
  
     },
     headerButton: {
- 
+        position: 'absolute',
+        top: 48,
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: '#ffffff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 4,
     },
     headerButtonLeft: {
+        left: 16,
  
     },
     headerButtonRight: {
- 
+        right: 16,
     },
     infoCard: {
  
