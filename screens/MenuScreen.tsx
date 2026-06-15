@@ -54,9 +54,9 @@ export default function MenuScreen({ navigation }: Props) {
         <View style={styles.container}>
             <StatusBar barStyle={"light-content"} backgroundColor={"#000"} />
             <ScrollView
-            style={styles.scroll}
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false}
+                style={styles.scroll}
+                contentContainerStyle={styles.scrollContent}
+                showsVerticalScrollIndicator={false}
             >
                 <View style={styles.headerImageWrapper}>
                     <Image
@@ -75,10 +75,87 @@ export default function MenuScreen({ navigation }: Props) {
                     <TouchableOpacity
                         style={[styles.headerButton, styles.headerButtonRight]}
                         activeOpacity={0.8}
-                        onPress={() => {}}
+                        onPress={() => { }}
                     >
                         <Feather name="file-text" size={22} color="#5e5e5e" />
                     </TouchableOpacity>
+                </View>
+                <View style={styles.infoCard}>
+                    <View style={styles.infoTopRow}>
+                        <Image
+                            source={require('../images/logo.png')}
+                            style={styles.infoLogo}
+                            resizeMode="contain"
+                        />
+                        <View style={styles.infoText}>
+                            <Text style={styles.brandName}>McDonald's</Text>
+                            <Text style={styles.brandSubtitle}>R. Dr. Renato Paes de Barros, 1017</Text>
+                        </View>
+                    </View>
+                    <View style={styles.statusRow}>
+                        <Feather name="clock" size={14} color="#59bb48" />
+                        <Text style={styles.statusText}>Aberto até 22:00</Text>
+                    </View>
+                    <ScrollView
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                        contentContainerStyle={styles.categoriesRow}
+                    >
+                        {categories.map((category) => {
+                            const isActive = category === activeCategory;
+                            return (
+                                <TouchableOpacity
+                                    key={category}
+                                    activeOpacity={0.8}
+                                    onPress={() => setActiveCategory(category)}
+                                    style={[
+                                        styles.categoryPill,
+                                        isActive && styles.categoryPillActives
+                                    ]}
+                                >
+                                    <Text
+                                        style={[
+                                            styles.categoryText,
+                                            isActive && styles.categoryTextActive,
+                                        ]}
+                                    >
+                                        {category}
+                                    </Text>
+                                </TouchableOpacity>
+                            );
+                        })}
+ 
+                    </ScrollView>
+                    <Text style={styles.sectionTitle}>Combos</Text>
+                    {combos.map((combo, index) => (
+                       <TouchableOpacity
+                            key={combo.id}
+                            style={[
+                                styles.productRow,
+                                index > 0 && styles.productRowDivider
+                            ]}
+                            activeOpacity={0.85}
+                            onPress={() => {
+                                
+                             }}
+
+                       >
+                        <View style={styles.productInfo}>
+                            <Text style={styles.productName}></Text>
+                            <Text style={styles.productDescription} numberOfLines={2}>
+                                {combo.description}
+                            </Text>
+                            <Text style={styles.productPrice}>{combo.price}</Text>
+                        </View>
+                        <Image
+                            source={combo.image}
+                            style={styles.productImage}
+                            resizeMode="contain"
+                        />
+                       </TouchableOpacity>
+
+                    ))
+                }
                 </View>
             </ScrollView>
         </View>
@@ -113,7 +190,7 @@ const styles = StyleSheet.create({
     infoCard: {
  
     },
-    infoCardRow: {
+    infoTopRow: {
  
     },
     infoLogo: {
@@ -150,6 +227,9 @@ const styles = StyleSheet.create({
  
     },
     sectionTitle: {
+ 
+    },
+    productRow: {
  
     },
     productRowDivider: {

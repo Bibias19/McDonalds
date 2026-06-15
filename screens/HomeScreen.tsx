@@ -58,7 +58,7 @@ export default function HomeScreen({ navigation }: Props) {
                             <MaterialCommunityIcons
                                 name="hamburger"
                                 size={36}
-                                color="#DA291C"
+                                color="#000000"
                             />
                         </View>
                         <View style={styles.cardLabelPill}>
@@ -72,7 +72,7 @@ export default function HomeScreen({ navigation }: Props) {
                         onPress={() => navigation.navigate('Menu')}
                     >
                         <View style={styles.iconCircle}>
-                            <Feather name="shopping-bag" size={34} color="#DA291C" />
+                            <Feather name="shopping-bag" size={34} color="#000000" />
                         </View>
                         <View style={styles.cardLabelPill}>
                             <Text style={styles.cardLabel}>Para levar</Text>
@@ -87,35 +87,30 @@ export default function HomeScreen({ navigation }: Props) {
  
 const styles = StyleSheet.create({
     safeArea: {
-        flex: 1,
-        backgroundColor: '#DA291C', // ALTERADO: vermelho McDonald's
+        flex: 1, // flex: 1 = ocupa toda altura disponível
+        backgroundColor: '#FFFFFF',
     },
     container: {
         flex: 1,
         backgroundColor: '#FFFFFF',
         paddingHorizontal: 24,
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderTopLeftRadius: 30, // ALTERADO: borda arredondada no topo
-        borderTopRightRadius: 30, // ALTERADO: borda arredondada no topo
+        alignItems: 'center', // eixo horizontal (em column)
+        justifyContent: 'center', // eixo vertical (em column)
     },
     header: {
         alignItems: 'center',
         marginBottom: 28,
     },
     logo: {
-        width: 80, // ALTERADO: 72 -> 80
-        height: 80, // ALTERADO: 72 -> 80
-        marginBottom: 12, // ALTERADO: 10 -> 12
-        borderRadius: 40, // ALTERADO: adicionado borda redonda
-        borderWidth: 3, // ALTERADO: adicionado borda
-        borderColor: '#DA291C', // ALTERADO: borda vermelha
+        width: 72,
+        height: 72,
+        marginBottom: 10,
     },
     brandName: {
-        fontSize: 26, // ALTERADO: 22 -> 26
-        fontWeight: '800', // ALTERADO: 700 -> 800
-        color: '#DA291C', // ALTERADO: preto -> vermelho McDonald's
-        letterSpacing: 1, // ALTERADO: 0.3 -> 1
+        fontSize: 22,
+        fontWeight: '700',
+        color: '#000000',
+        letterSpacing: 0.3,
     },
     welcomeSection: {
         alignItems: 'center',
@@ -123,39 +118,38 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
     },
     title: {
-        fontSize: 28, // ALTERADO: 26 -> 28
-        fontWeight: '800', // ALTERADO: 700 -> 800
-        color: '#DA291C', // ALTERADO: preto -> vermelho McDonald's
+        fontSize: 26,
+        fontWeight: '700',
+        color: '#000000',
         textAlign: 'center',
         marginBottom: 12,
     },
     subtitle: {
-        fontSize: 16, // ALTERADO: 15 -> 16
-        lineHeight: 24, // ALTERADO: 22 -> 24
-        color: '#666666', // ALTERADO: #707070 -> #666666
+        fontSize: 15,
+        lineHeight: 22,
+        color: '#707070',
         textAlign: 'center',
-        fontWeight: '500', // ALTERADO: adicionado peso médio
     },
     cardsRow: {
         flexDirection: 'row',
         width: '100%',
         justifyContent: 'center',
-        gap: 16, // ALTERADO: 14 -> 16
+        gap: 14,
     },
     card: {
         flex: 1,
         maxWidth: 168,
         backgroundColor: '#FFFFFF',
-        borderRadius: 24, // ALTERADO: 20 -> 24
+        borderRadius: 20, // bordas arredondadas
         paddingVertical: 28,
         paddingHorizontal: 12,
         alignItems: 'center',
         justifyContent: 'space-between',
         minHeight: 200,
         // Sombra iOS:
-        shadowColor: '#DA291C', // ALTERADO: preto -> vermelho
+        shadowColor: '#000000',
         shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.15, // ALTERADO: 0.08 -> 0.15
+        shadowOpacity: 0.08,
         shadowRadius: 12,
         // Sombra Android:
         elevation: 6,
@@ -163,14 +157,14 @@ const styles = StyleSheet.create({
     iconCircle: {
         width: 72,
         height: 72,
-        borderRadius: 36,
-        backgroundColor: '#FFF5F4', // ALTERADO: #F2F2F2 -> vermelho bem claro
+        borderRadius: 36, // metade da largura/altura = círculo
+        backgroundColor: '#F2F2F2',
         alignItems: 'center',
         justifyContent: 'center',
         marginBottom: 24,
     },
     cardLabelPill: {
-        backgroundColor: '#DA291C', // ALTERADO: #F2F2F2 -> vermelho
+        backgroundColor: '#F2F2F2',
         borderRadius: 25,
         paddingVertical: 10,
         paddingHorizontal: 14,
@@ -179,8 +173,9 @@ const styles = StyleSheet.create({
     },
     cardLabel: {
         fontSize: 14,
-        fontWeight: '700', // ALTERADO: 600 -> 700
-        color: '#FFFFFF', // ALTERADO: preto -> branco
+        fontWeight: '600',
+        color: '#000000',
         textAlign: 'center',
     },
 });
+ 
