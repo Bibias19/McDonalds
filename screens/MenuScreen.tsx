@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     headerButton: {
         position: 'absolute',
         top: 48,
-        width: 40,
+        width: 0,
         height: 40,
         borderRadius: 20,
         backgroundColor: '#ffffff',
@@ -208,66 +208,116 @@ const styles = StyleSheet.create({
         right: 16,
     },
     infoCard: {
- 
+        backgroundColor: '#FFFFFF',
+        marginHorizontal:-24,
+        borderTopLeftRadius: 24,
+        borderTopRightRadius: 24,
+        paddingHorizontal: 40,
+        paddingTop: 20,
+        paddingBottom: 16,
+        minHeight: 600,
     },
     infoTopRow: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 12,
  
     },
     infoLogo: {
- 
+    width: 48,
+    height: 48,
+    borderRadius: 8,
     },
     infoText: {
- 
+        flex: 1,
     },
     brandName: {
- 
+        fontSize: 18,
+        color:'#000000',
+        fontWeight: 'bold',
     },
     brandSubtitle: {
- 
+        fontSize: 13,
+        color: '#707070',
+        marginTop: 2,
+
     },
     statusRow: {
- 
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 6,
+        marginTop: 12,
     },
     statusText: {
- 
+        color: '#59bb48',
+        fontSize: 13,
+        fontWeight: 'bold',
     },
     categoriesRow: {
- 
+        flexDirection: 'row',
+        gap: 10,
+        paddingVertical: 18,
+        paddingRight: 12,
     },
     categoryPill: {
- 
+        paddingVertical: 18,
+        paddingHorizontal: 9,
+        backgroundColor: '#f2f2f2',
+        borderRadius: 22,
     },
     categoryPillActives: {
- 
+        backgroundColor: '#ffc72c',
     },
     categoryText: {
- 
+        fontSize: 14,
+        color: '#5e5e5e',
+        fontWeight: '600',
     },
     categoryTextActive: {
- 
+        color: '#000000',
     },
     sectionTitle: {
- 
+        fontSize: 22,
+        color: '#000000',
+        fontWeight: 'bold',
+        marginBottom: 8,
     },
     productRow: {
- 
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 12,
+        paddingVertical: 14,
     },
     productRowDivider: {
- 
+        borderTopWidth: 1,
+        borderTopColor: '#e0e0e0',
     },
     productInfo: {
- 
+        flex: 1,
     },
     productName: {
- 
+         fontWeight: '700',
+        fontSize: 14,
+        color: '#333333',
+        marginBottom: 4,
     },
     productDescription: {
+        fontSize: 12,
+        color: '#707070',
+        lineHeight: 18,
+        marginBottom: 8,
  
     },
     productPrice: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        color: '#000000',
  
     },
     productImage: {
+        width: 80,
+        height: 80,
+        borderRadius: 8,
  
     },
  
