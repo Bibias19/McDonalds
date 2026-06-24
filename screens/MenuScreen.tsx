@@ -114,11 +114,50 @@ const Bebidas: Product[] = [
         image: require('../images/bebida-coca-cola.png')
     }
 ];
+const bebidas: Product[] = [
+    {
+        id: 'bebida-1',
+        name: 'Coca-Cola 350ml',
+        description: 'Refrigerante sabor cola, perfeito para acompanhar seu lanche.',
+        price: 'R$ 6,90',
+        image: require('../images/coca-cola.png')
+    },
+    {
+        id: 'bebida-2',
+        name: 'Fanta Laranja 350ml',
+        description: 'Refrigerante sabor laranja, perfeito para acompanhar seu lanche.',
+        price: 'R$ 5,90',
+        image: require('../images/fanta-laranja.png')
+    },
+    {
+        id: 'bebida-3',
+        name: 'Agua Mineral 500ml',
+        description: 'Água mineral natural, perfeita para acompanhar seu lanche.',
+        price: 'R$ 3,90',
+        image: require('../images/agua.png')
+    }
+
+];
 
 const categories = ['Combos', 'Lanches', 'Acompanhamentos','Bebidas' , 'Sobremesas'];
+function getProdutos(categoriaSelecionada: string): Product[] {
+    switch (categoriaSelecionada) {
+        case 'Combos':
+            return combos;
+        case 'Lanches':
+            return lanches;
+        case 'Acompanhamentos':
+            return Acompanhamentos;
+        case 'Bebidas':
+            return Bebidas;
+        default:
+            return [];
+    }
+}
  
 export default function MenuScreen({ navigation }: Props) {
-    const [activeCategory, setActiveCategory] = useState<string>('Combos');
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>('Combos');
+    const produtosDaCategoria = getProdutos(categoriaSelecionada);
     return (
         <View style={styles.container}>
             <StatusBar barStyle={"light-content"} backgroundColor={"#000"} />
@@ -171,12 +210,12 @@ export default function MenuScreen({ navigation }: Props) {
                         contentContainerStyle={styles.categoriesRow}
                     >
                         {categories.map((category) => {
-                            const isActive = category === activeCategory;
+                            const isActive = category === categoriaSelecionada;
                             return (
                                 <TouchableOpacity
                                     key={category}
                                     activeOpacity={0.8}
-                                    onPress={() => setActiveCategory(category)}
+                                    onPress={() => setCategoriaSelecionada(category)}
                                     style={[
                                         styles.categoryPill,
                                         isActive && styles.categoryPillActives
@@ -195,10 +234,10 @@ export default function MenuScreen({ navigation }: Props) {
                         })}
  
                     </ScrollView>
-                    <Text style={styles.sectionTitle}>Combos</Text>
-                    {combos.map((combo, index) => (
+                    <Text style={styles.sectionTitle}>{categoriaSelecionada}</Text>
+                    {produtosDaCategoria.map((produto, index) => (
                        <TouchableOpacity
-                            key={combo.id}
+                            key={produto.id}
                             style={[
                                 styles.productRow,
                                 index > 0 && styles.productRowDivider
@@ -210,14 +249,14 @@ export default function MenuScreen({ navigation }: Props) {
 
                        >
                         <View style={styles.productInfo}>
-                            <Text style={styles.productName}>{combo.name}</Text>
+                            <Text style={styles.productName}>{produto.name}</Text>
                             <Text style={styles.productDescription} numberOfLines={2}>
-                                {combo.description}
+                                {produto.description}
                             </Text>
-                            <Text style={styles.productPrice}>{combo.price}</Text>
+                            <Text style={styles.productPrice}>{produto.price}</Text>
                         </View>
                         <Image
-                            source={combo.image}
+                            source={produto.image}
                             style={styles.productImage}
                             resizeMode="contain"
                         />
