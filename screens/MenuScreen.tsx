@@ -79,7 +79,7 @@ const lanches: Product[] = [
         name: 'Cheddar McMelt',
         description: 'Hambúrguer suculento com cheddar derretido, alface e molho especial.',
         price: 'R$ 18,90',
-        image: require('../images/lanche-cheddar-mcmelt.png'),
+        image: require('../images/lanche-duplo-cheddar-mcmelt.png'),
     }
 ];
 const Acompanhamentos: Product[] = [
@@ -103,18 +103,16 @@ const Acompanhamentos: Product[] = [
         description: 'Batatas fritas crocantes, perfeitas para acompanhar seu lanche.',
         price: 'R$ 6,90',
         image: require('../images/fritas-pequena.png')
+    },
+    {
+        id: 'acompanhamento-4',
+        name:'McNuggets 6 unidades',
+        description: 'Deliciosos pedaços de frango empanados, perfeitos para acompanhar seu lanche.',
+        price: 'R$ 10,90',
+        image: require('../images/nuggt.png')
     }
 ];
 const Bebidas: Product[] = [
-    {
-        id: 'bebida-1',
-        name: 'Coca-Cola 350ml',
-        description: 'Refrigerante sabor cola, perfeito para acompanhar seu lanche.',
-        price: 'R$ 6,90',
-        image: require('../images/bebida-coca-cola.png')
-    }
-];
-const bebidas: Product[] = [
     {
         id: 'bebida-1',
         name: 'Coca-Cola 350ml',
@@ -135,11 +133,48 @@ const bebidas: Product[] = [
         description: 'Água mineral natural, perfeita para acompanhar seu lanche.',
         price: 'R$ 3,90',
         image: require('../images/agua.png')
+    },
+    {
+        id: 'bebida-4',
+        name: 'Suco de Laranja 300ml',
+        description: 'Suco natural de laranja, perfeito para acompanhar seu lanche.',
+        price: 'R$ 7,90',
+        image: require('../images/sucos-del-valle.png'),
+    },
+
+];
+const Sobremesas: Product[] = [
+    {
+        id: 'sobremesa-1',
+        name: 'Casquinha de baunilha',
+        description: 'Sobremesa deliciosa com bola de sorvete de baunilha.',
+        price: 'R$ 5,90',
+        image: require('../images/casquinha-baunilha.png')
+    },
+    {id: 'sobremesa-2', 
+     name: 'Casquinha de chocolate',
+     description: 'Sobremesa deliciosa com bola de sorvete de chocolate.',
+     price: 'R$ 5,90',
+     image: require('../images/casquinha-chocolate.png')
+    },
+    {
+        id: 'sobremesa-3',
+        name: 'casquinha mista',
+        description: 'Sobremesa deliciosa com bola de sorvete de baunilha e chocolate.',
+        price: 'R$ 7,90',
+        image: require('../images/casquinha-mista.png')
+    },
+    {
+        id: 'sobremesa-4',
+        name: 'Sundae',
+        description: 'Sobremesa deliciosa com bola de sorvete e calda de chocolate.',
+        price: 'R$ 8,90',
+        image: require('../images/sundae.png')
     }
 
 ];
 
-const categories = ['Combos', 'Lanches', 'Acompanhamentos','Bebidas' , 'Sobremesas'];
+const categories = ['Combos', 'Lanches', 'Acompanhamentos','Bebidas', 'Sobremesas'];
 function getProdutos(categoriaSelecionada: string): Product[] {
     switch (categoriaSelecionada) {
         case 'Combos':
@@ -150,6 +185,8 @@ function getProdutos(categoriaSelecionada: string): Product[] {
             return Acompanhamentos;
         case 'Bebidas':
             return Bebidas;
+        case 'Sobremesas':
+            return Sobremesas;
         default:
             return [];
     }
@@ -363,6 +400,7 @@ const styles = StyleSheet.create({
     },
     categoriesRow: {
         flexDirection: 'row',
+        alignItems: 'center',
         gap: 10,
         paddingVertical: 8,
         paddingRight: 12,
