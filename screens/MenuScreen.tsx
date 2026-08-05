@@ -12,188 +12,15 @@ import { Ionicons, Feather } from "@expo/vector-icons";
  
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./HomeScreen";
+import { getProdutos } from "../data/produtos";
  
 type Props = NativeStackScreenProps<RootStackParamList, "Menu">;
-type Product = {
-    id: string;
-    name: string;
-    description: string;
-    price: string;
-    image: number;
-};
-
-const combos: Product[] = [
-    {
-        id: 'combo-1',
-        name: 'McOferta Média Big Mac Duplo',
-        description: 'O clássico Big Mac, acompanhado de batatas médias e uma bebida média.',
-        price: 'R$ 39,90',
-        image: require('../images/combo-big-mac-duplo.png')
-    },
-    {
-        id: 'combo-2',
-        name: 'Novo Brabo Melt Onion Ring',
-        description: 'Delicioso hambúrguer com anéis de cebola crocantes, acompanhado de batatas médias e uma bebida média.',
-        price: 'R$ 41,50',
-        image: require('../images/combo-brabo-melt-onion-rings.png'),
-    },
-    {
-        id: 'combo-3',
-        name: 'McCrispy Chicken Elite',
-        description: 'Saboroso hambúrguer de frango crispy, acompanhado de batatas médias e uma bebida média.',
-        price: 'R$ 39,90',
-        image: require('../images/combo-mcrispy-elite.png'),
-    },
-    {
-        id: 'combo-4',
-        name: 'Duplo Cheddar McMelt',
-        description: 'Hambúrguer suculento com cheddar derretido, acompanhado de batatas médias e uma bebida média.',
-        price: 'R$ 36,20',
-        image: require('../images/combo-duplo-cheddar-mcmelt.png'),
-    },
-];
-const lanches: Product[] = [
-    {
-        id: 'lanche-1',
-        name: 'Big Mac',
-        description: 'O clássico hambúrguer com dois hambúrgueres, alface, queijo, picles, cebola e molho especial.',
-        price: 'R$ 27,90',
-        image: require('../images/lanche-big-mac.png')
-    },
-    {
-        id: 'lanche-2',
-        name: 'Duplo Quarterão',
-        description: 'Dois hambúrgueres com queijo, alface, tomate, picles e ketchup.',
-        price: 'R$ 15,50',
-        image: require('../images/lanche-duplo-quarterao.png'),
-    },
-    {
-        id: 'lanche-3',
-        name: 'McMelt',
-        description: 'Composto por pão tipo brioche de batata,molho Honey&fire...',
-        price: 'R$ 18,90',
-        image: require('../images/lanche-mcmelt.png'),
-    },
-    {
-        id: 'lanche-4',
-        name: 'Cheddar McMelt',
-        description: 'Hambúrguer suculento com cheddar derretido, alface e molho especial.',
-        price: 'R$ 18,90',
-        image: require('../images/lanche-duplo-cheddar-mcmelt.png'),
-    }
-];
-const Acompanhamentos: Product[] = [
-    {
-        id: 'acompanhamento-1',
-        name: 'Batata Frita Grande',
-        description: 'Batatas fritas crocantes, perfeitas para acompanhar seu lanche.',
-        price: 'R$ 12,90',
-        image: require('../images/fritas-grande.png')
-    }, {
-        id: 'acompanhamento-2',
-        name: 'Batata Frita Média',
-        description: 'Batatas fritas crocantes, perfeitas para acompanhar seu lanche.',
-        price: 'R$ 9,90',
-        image: require('../images/fritas-media.png')
-    },
-   
-    {
-        id: 'acompanhamento-3',
-        name:'Batata pequena',
-        description: 'Batatas fritas crocantes, perfeitas para acompanhar seu lanche.',
-        price: 'R$ 6,90',
-        image: require('../images/fritas-pequena.png')
-    },
-    {
-        id: 'acompanhamento-4',
-        name:'McNuggets 6 unidades',
-        description: 'Deliciosos pedaços de frango empanados, perfeitos para acompanhar seu lanche.',
-        price: 'R$ 10,90',
-        image: require('../images/nuggt.png')
-    }
-];
-const Bebidas: Product[] = [
-    {
-        id: 'bebida-1',
-        name: 'Coca-Cola 350ml',
-        description: 'Refrigerante sabor cola, perfeito para acompanhar seu lanche.',
-        price: 'R$ 6,90',
-        image: require('../images/coca-cola.png')
-    },
-    {
-        id: 'bebida-2',
-        name: 'Fanta Laranja 350ml',
-        description: 'Refrigerante sabor laranja, perfeito para acompanhar seu lanche.',
-        price: 'R$ 5,90',
-        image: require('../images/fanta-laranja.png')
-    },
-    {
-        id: 'bebida-3',
-        name: 'Agua Mineral 500ml',
-        description: 'Água mineral natural, perfeita para acompanhar seu lanche.',
-        price: 'R$ 3,90',
-        image: require('../images/agua.png')
-    },
-    {
-        id: 'bebida-4',
-        name: 'Suco de Laranja 300ml',
-        description: 'Suco natural de laranja, perfeito para acompanhar seu lanche.',
-        price: 'R$ 7,90',
-        image: require('../images/sucos-del-valle.png'),
-    },
-
-];
-const Sobremesas: Product[] = [
-    {
-        id: 'sobremesa-1',
-        name: 'Casquinha de baunilha',
-        description: 'Sobremesa deliciosa com bola de sorvete de baunilha.',
-        price: 'R$ 5,90',
-        image: require('../images/casquinha-baunilha.png')
-    },
-    {id: 'sobremesa-2', 
-     name: 'Casquinha de chocolate',
-     description: 'Sobremesa deliciosa com bola de sorvete de chocolate.',
-     price: 'R$ 5,90',
-     image: require('../images/casquinha-chocolate.png')
-    },
-    {
-        id: 'sobremesa-3',
-        name: 'casquinha mista',
-        description: 'Sobremesa deliciosa com bola de sorvete de baunilha e chocolate.',
-        price: 'R$ 7,90',
-        image: require('../images/casquinha-mista.png')
-    },
-    {
-        id: 'sobremesa-4',
-        name: 'Sundae',
-        description: 'Sobremesa deliciosa com bola de sorvete e calda de chocolate.',
-        price: 'R$ 8,90',
-        image: require('../images/sundae.png')
-    }
-
-];
-
-const categories = ['Combos', 'Lanches', 'Acompanhamentos','Bebidas', 'Sobremesas'];
-function getProdutos(categoriaSelecionada: string): Product[] {
-    switch (categoriaSelecionada) {
-        case 'Combos':
-            return combos;
-        case 'Lanches':
-            return lanches;
-        case 'Acompanhamentos':
-            return Acompanhamentos;
-        case 'Bebidas':
-            return Bebidas;
-        case 'Sobremesas':
-            return Sobremesas;
-        default:
-            return [];
-    }
-}
+ 
+const categories = ['Combos', 'Lanches', 'Bebidas', 'Acompanhamentos', 'Sobremesas'];
  
 export default function MenuScreen({ navigation }: Props) {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>('Combos');
+ 
     const produtosDaCategoria = getProdutos(categoriaSelecionada);
     return (
         <View style={styles.container}>
@@ -222,7 +49,7 @@ export default function MenuScreen({ navigation }: Props) {
                         activeOpacity={0.8}
                         onPress={() => { }}
                     >
-                        <Feather name="file-text" size={22} color="#8e8989" />
+                        <Feather name="file-text" size={22} color="#5e5e5e" />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.infoCard}>
@@ -273,34 +100,38 @@ export default function MenuScreen({ navigation }: Props) {
                     </ScrollView>
                     <Text style={styles.sectionTitle}>{categoriaSelecionada}</Text>
                     {produtosDaCategoria.map((produto, index) => (
-                       <TouchableOpacity
+                        <TouchableOpacity
                             key={produto.id}
                             style={[
                                 styles.productRow,
-                                index > 0 && styles.productRowDivider
+                                index > 0 && styles.productRowDivider,
                             ]}
                             activeOpacity={0.85}
                             onPress={() => {
-                                
-                             }}
-
-                       >
-                        <View style={styles.productInfo}>
-                            <Text style={styles.productName}>{produto.name}</Text>
-                            <Text style={styles.productDescription} numberOfLines={2}>
-                                {produto.description}
-                            </Text>
-                            <Text style={styles.productPrice}>{produto.price}</Text>
-                        </View>
-                        <Image
-                            source={produto.image}
-                            style={styles.productImage}
-                            resizeMode="contain"
-                        />
-                       </TouchableOpacity>
-
-                    ))
-                }
+                                navigation.navigate("ProductDetail", {
+                                    productId: produto.id,
+                                });
+ 
+                            }}
+                        >
+                            <View style={styles.productInfo}>
+                                <Text style={styles.productName}>
+                                    {produto.name}
+                                </Text>
+                                <Text style={styles.productDescription} numberOfLines={2}>
+                                    {produto.description}
+                                </Text>
+                                <Text style={styles.productPrice}>
+                                    {produto.price}
+                                </Text>
+                            </View>
+                            <Image
+                                source={produto.image}
+                                style={styles.productImage}
+                                resizeMode="contain"
+                            />
+                        </TouchableOpacity>
+                    ))}
                 </View>
             </ScrollView>
         </View>
@@ -310,8 +141,7 @@ export default function MenuScreen({ navigation }: Props) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#F2F2F2',
- 
+        backgroundColor: '#fff',
     },
     scroll: {
         flex: 1,
@@ -321,43 +151,41 @@ const styles = StyleSheet.create({
     },
     headerImageWrapper: {
         width: '100%',
-        height: 240,
+        height: 200,
         position: 'relative',
         backgroundColor: '#000',
     },
     headerImage: {
         width: '100%',
         height: '100%',
- 
     },
     headerButton: {
         position: 'absolute',
         top: 48,
         width: 40,
         height: 40,
-        borderRadius: 20,
-        backgroundColor: '#ffffff',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 20,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.25,
+        shadowOpacity: 0.3,
         shadowRadius: 4,
-        elevation: 4,
+        elevation: 5,
     },
     headerButtonLeft: {
         left: 16,
- 
     },
     headerButtonRight: {
         right: 16,
     },
     infoCard: {
-        backgroundColor: '#FFFFFF',
-        marginHorizontal:-24,
+        backgroundColor: '#fff',
+        marginTop: -24,
         borderTopLeftRadius: 24,
         borderTopRightRadius: 24,
-        paddingHorizontal: 40,
+        paddingHorizontal: 20,
         paddingTop: 20,
         paddingBottom: 16,
         minHeight: 600,
@@ -366,26 +194,24 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 12,
- 
     },
     infoLogo: {
-    width: 48,
-    height: 48,
-    borderRadius: 8,
+        width: 48,
+        height: 48,
+        borderRadius: 8,
     },
     infoText: {
         flex: 1,
     },
     brandName: {
         fontSize: 18,
-        color:'#000000',
+        color: '#000',
         fontWeight: 'bold',
     },
     brandSubtitle: {
         fontSize: 13,
-        color: '#707070',
+        color: '#5e5e5e',
         marginTop: 2,
-
     },
     statusRow: {
         flexDirection: 'row',
@@ -402,31 +228,30 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         gap: 10,
-        paddingVertical: 8,
+        paddingVertical: 18,
         paddingRight: 12,
     },
     categoryPill: {
-        paddingVertical: 6,
-        paddingHorizontal: 19,
-        backgroundColor: '#f2f2f2',
+        paddingHorizontal: 18,
+        paddingVertical: 9,
+        backgroundColor: '#dfdfdf',
         borderRadius: 22,
     },
     categoryPillActives: {
-        backgroundColor: '#ffc72c',
+        backgroundColor: '#FFC72C',
     },
     categoryText: {
         fontSize: 14,
-        color: '#737272',
-        fontWeight: '600',
+        fontWeight: 'bold',
+        color: '#000000',
     },
     categoryTextActive: {
         color: '#000000',
-        fontWeight: 'bold',
     },
     sectionTitle: {
-        fontSize: 22,
-        color: '#000000',
+        fontSize: 18,
         fontWeight: 'bold',
+        color: '#000',
         marginBottom: 8,
     },
     productRow: {
@@ -437,35 +262,31 @@ const styles = StyleSheet.create({
     },
     productRowDivider: {
         borderTopWidth: 1,
-        borderTopColor: '#e4e2e2',
+        borderTopColor: '#e0e0e0',
     },
     productInfo: {
         flex: 1,
     },
     productName: {
-         fontWeight: 'bold',
-        fontSize: 14,
-        color: '#121212',
+        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#000',
         marginBottom: 4,
     },
     productDescription: {
-        fontSize: 12,
-        color: '#707070',
+        fontSize: 13,
+        color: '#5e5e5e',
         lineHeight: 18,
         marginBottom: 8,
- 
     },
     productPrice: {
         fontSize: 14,
         fontWeight: 'bold',
-        color: '#000000',
- 
+        color: '#000',
     },
     productImage: {
-        width: 80,
-        height: 80,
-        borderRadius: 8,
- 
+        width: 90,
+        height: 70,
     },
  
 })

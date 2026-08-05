@@ -1,35 +1,19 @@
-// =============================================================================
-// data/produtos.ts — BANCO DE DADOS LOCAL DOS PRODUTOS
-// =============================================================================
-// Separamos os DADOS da INTERFACE. Assim, MenuScreen e ProductDetailScreen
-// usam a MESMA fonte de informação — evita duplicar nome, preço, imagem, etc.
-//
-// Nesta aula nova, cada produto ganhou campos extras:
-//   - about: descrição completa (seção "Sobre" na tela de detalhe)
-//   - ingredients: lista de ingredientes (seção "Ingredientes")
-// =============================================================================
- 
-// -----------------------------------------------------------------------------
-// TIPO Product — formato de cada item do cardápio
-// -----------------------------------------------------------------------------
 export type Product = {
     id: string;
     name: string;
-    description: string; // texto curto (lista do cardápio)
-    about: string; // texto longo (tela de detalhe)
+    description: string;
+    about: string;
     price: string;
     image: number;
-    ingredients: string[]; // array de strings com cada ingrediente
+    ingredients: string[];
 };
  
-// --- COMBOS ---
 export const combos: Product[] = [
     {
         id: 'combo-1',
         name: 'McOferta Média Big Mac Duplo',
         description: 'Quatro hambúrgueres (100% carne bovina), alface americana...',
-        about:
-            'Quatro hambúrgueres (100% carne bovina), alface americana, queijo fatiado sabor cheddar, molho especial, cebola, picles e pão com gergilim, acompanhamento e bebida.',
+        about: 'Quatro hambúrgueres (100% carne bovina), alface americana, queijo fatiado sabor cheddar, molho especial, cebola, picles e pão com gergilim, acompanhamento e bebida.',
         price: 'R$ 39,90',
         image: require('../images/combo-big-mac-duplo.png'),
         ingredients: [
@@ -46,8 +30,7 @@ export const combos: Product[] = [
         id: 'combo-2',
         name: 'Novo Brabo Melt Onion Rings',
         description: 'Dois hambúrgueres de carne 100% bovina, méquinese, a exclu...',
-        about:
-            'Dois hambúrgueres de carne 100% bovina, méquinese, cebola crispy, onion rings, pão brioche, acompanhamento e bebida.',
+        about: 'Dois hambúrgueres de carne 100% bovina, méquinese, cebola crispy, onion rings, pão brioche, acompanhamento e bebida.',
         price: 'R$ 41,50',
         image: require('../images/combo-brabo-melt-onion-rings.png'),
         ingredients: [
@@ -63,8 +46,7 @@ export const combos: Product[] = [
         id: 'combo-3',
         name: 'McCrispy Chicken Elite',
         description: 'Composto por pão tipo brioche com batata, molho Honey&Fire, ...',
-        about:
-            'Composto por pão tipo brioche com batata, molho Honey&Fire, bacon em fatias, alface, tomate, cebola roxa e sobrecoxa de frango empanada, acompanhamento e bebida.',
+        about: 'Composto por pão tipo brioche com batata, molho Honey&Fire, bacon em fatias, alface, tomate, cebola roxa e sobrecoxa de frango empanada, acompanhamento e bebida.',
         price: 'R$ 39,90',
         image: require('../images/combo-mcrispy-elite.png'),
         ingredients: [
@@ -81,8 +63,7 @@ export const combos: Product[] = [
         id: 'combo-4',
         name: 'Duplo Cheddar McMelt',
         description: 'Dois hambúrgueres (100% carne bovina), molho lácteo com queij...',
-        about:
-            'Dois hambúrgueres (100% carne bovina), molho lácteo com queijo tipo cheddar, cebola ao molho shoyu, pão escuro com gergelim, acompanhamento e bebida.',
+        about: 'Dois hambúrgueres (100% carne bovina), molho lácteo com queijo tipo cheddar, cebola ao molho shoyu, pão escuro com gergelim, acompanhamento e bebida.',
         price: 'R$ 36,20',
         image: require('../images/combo-duplo-cheddar-mcmelt.png'),
         ingredients: [
@@ -94,14 +75,12 @@ export const combos: Product[] = [
     },
 ];
  
-// --- LANCHES ---
 export const lanches: Product[] = [
     {
         id: 'lanche-1',
         name: 'Big Mac',
         description: 'Quatro hambúrgueres (100% carne bovina), alface americana...',
-        about:
-            'Dois hambúrgueres (100% carne bovina), alface americana, queijo fatiado sabor cheddar, molho especial, cebola, picles e pão com gergilim.',
+        about: 'Dois hambúrgueres (100% carne bovina), alface americana, queijo fatiado sabor cheddar, molho especial, cebola, picles e pão com gergilim.',
         price: 'R$ 39,90',
         image: require('../images/lanche-big-mac.png'),
         ingredients: [
@@ -118,8 +97,7 @@ export const lanches: Product[] = [
         id: 'lanche-2',
         name: 'Duplo Quarterão',
         description: 'Dois hambúrgueres de carne 100% bovina, méquinese, a exclu...',
-        about:
-            'Dois hambúrgueres de carne 100% bovina, méquinese, cebola, picles, queijo cheddar, pão com gergilim.',
+        about: 'Dois hambúrgueres de carne 100% bovina, méquinese, cebola, picles, queijo cheddar, pão com gergilim.',
         price: 'R$ 41,50',
         image: require('../images/lanche-duplo-quarterao.png'),
         ingredients: [
@@ -166,7 +144,6 @@ export const lanches: Product[] = [
     },
 ];
  
-// --- FRITAS ---
 export const fritas: Product[] = [
     {
         id: 'fritas-1',
@@ -197,7 +174,6 @@ export const fritas: Product[] = [
     },
 ];
  
-// --- BEBIDAS ---
 export const bebidas: Product[] = [
     {
         id: 'bebida-1',
@@ -228,7 +204,6 @@ export const bebidas: Product[] = [
     },
 ];
  
-// Junta TODOS os produtos em um único array (útil para buscar por id)
 const todosOsProdutos: Product[] = [
     ...combos,
     ...lanches,
@@ -236,9 +211,6 @@ const todosOsProdutos: Product[] = [
     ...bebidas,
 ];
  
-// -----------------------------------------------------------------------------
-// getProdutos — retorna produtos de uma categoria (usado na MenuScreen)
-// -----------------------------------------------------------------------------
 export function getProdutos(categoria: string): Product[] {
     switch (categoria) {
         case 'Combos':
@@ -254,14 +226,6 @@ export function getProdutos(categoria: string): Product[] {
     }
 }
  
-// -----------------------------------------------------------------------------
-// getProdutoById — busca UM produto pelo id (usado na ProductDetailScreen)
-// -----------------------------------------------------------------------------
-// Quando navegamos com navigation.navigate('ProductDetail', { productId: 'combo-1' }),
-// a tela de detalhe recebe só o ID e usa esta função para achar o produto completo.
 export function getProdutoById(id: string): Product | undefined {
     return todosOsProdutos.find((produto) => produto.id === id);
 }
- 
- 
- 
