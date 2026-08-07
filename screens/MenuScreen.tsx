@@ -9,18 +9,18 @@ import {
     StatusBar,
 } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
- 
+
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "./HomeScreen";
 import { getProdutos } from "../data/produtos";
- 
+
 type Props = NativeStackScreenProps<RootStackParamList, "Menu">;
- 
+
 const categories = ['Combos', 'Lanches', 'Bebidas', 'Acompanhamentos', 'Sobremesas'];
- 
+
 export default function MenuScreen({ navigation }: Props) {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState<string>('Combos');
- 
+
     const produtosDaCategoria = getProdutos(categoriaSelecionada);
     return (
         <View style={styles.container}>
@@ -43,11 +43,11 @@ export default function MenuScreen({ navigation }: Props) {
                     >
                         <Ionicons name="chevron-back" size={22} color="#5e5e5e" />
                     </TouchableOpacity>
- 
+
                     <TouchableOpacity
                         style={[styles.headerButton, styles.headerButtonRight]}
                         activeOpacity={0.8}
-                        onPress={() => { }}
+                        onPress={() => navigation.navigate('Cart')}
                     >
                         <Feather name="file-text" size={22} color="#5e5e5e" />
                     </TouchableOpacity>
@@ -96,7 +96,7 @@ export default function MenuScreen({ navigation }: Props) {
                                 </TouchableOpacity>
                             );
                         })}
- 
+
                     </ScrollView>
                     <Text style={styles.sectionTitle}>{categoriaSelecionada}</Text>
                     {produtosDaCategoria.map((produto, index) => (
@@ -111,7 +111,7 @@ export default function MenuScreen({ navigation }: Props) {
                                 navigation.navigate("ProductDetail", {
                                     productId: produto.id,
                                 });
- 
+
                             }}
                         >
                             <View style={styles.productInfo}>
@@ -137,7 +137,7 @@ export default function MenuScreen({ navigation }: Props) {
         </View>
     );
 }
- 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -288,5 +288,5 @@ const styles = StyleSheet.create({
         width: 90,
         height: 70,
     },
- 
+
 })

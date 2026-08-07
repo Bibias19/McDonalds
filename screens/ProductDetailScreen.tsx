@@ -1,5 +1,5 @@
 import { useState } from "react";
- 
+
 import {
     View,
     Text,
@@ -10,23 +10,25 @@ import {
     SafeAreaView,
     StatusBar,
 } from 'react-native';
- 
+
 import { Ionicons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
- 
+
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import type { RootStackParamList } from "./HomeScreen";
- 
+
 import { getProdutoById } from "../data/produtos";
- 
+import { useCart } from "../context/CartContext";
+
 type Props = NativeStackScreenProps<RootStackParamList, 'ProductDetail'>;
- 
+
 export default function ProductDetailScreen({ navigation, route }: Props) {
     const { productId } = route.params;
     const produto = getProdutoById(productId);
     const [quantidade, setQuantidade] = useState(1);
     const insets = useSafeAreaInsets();
- 
+    const { addItem } = useCart();
+
     if (!produto) {
         return (
             <SafeAreaView style={styles.container}>
@@ -37,7 +39,7 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
             </SafeAreaView>
         );
     }
- 
+
     return (
         <View style={styles.container}>
             <StatusBar barStyle={"dark-content"} backgroundColor={"#FFFFFF"} />
@@ -50,11 +52,11 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
             <TouchableOpacity
                 style={[styles.headerButton, styles.headerButtonRight]}
                 activeOpacity={0.8}
-                onPress={() => { }}
+                onPress={() => navigation.navigate('Cart')}
             >
                 <Feather name="file-text" size={20} color={"#000000"} />
             </TouchableOpacity>
- 
+
             <ScrollView
                 style={styles.scroll}
                 contentContainerStyle={styles.scrollContent}
@@ -74,7 +76,7 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
                     <Text style={styles.brandName}>McDonald's</Text>
                 </View>
                 <Text style={styles.productName}>{produto.name}</Text>
- 
+
                 <View style={styles.priceRow}>
                     <Text style={styles.price}>{produto.price}</Text>
                     <View style={styles.quantitySelector}>
@@ -89,9 +91,9 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
                         >
                             <Ionicons name="chevron-back" size={18} color="#000000" />
                         </TouchableOpacity>
- 
+
                         <Text style={styles.quantityText}>{quantidade}</Text>
- 
+
                         <TouchableOpacity
                             style={styles.quantityButtonPlus}
                             activeOpacity={0.8}
@@ -103,7 +105,7 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
                 </View>
                 <Text style={styles.sectionTitle}>Sobre</Text>
                 <Text style={styles.aboutText}>{produto.about}</Text>
- 
+
                 <View style={styles.ingredientsHeader}>
                     <MaterialCommunityIcons
                         name="chef-hat"
@@ -128,7 +130,10 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
                 <TouchableOpacity
                     style={styles.addButton}
                     activeOpacity={0.85}
-                    onPress={() => {}}
+                    onPress={() => {
+                        addItem(produto, quantidade);
+                        navigation.navigate('Cart');
+                    }}
                 >
                     <Text style={styles.addButtonText}>Adicionar à sacola</Text>
                 </TouchableOpacity>
@@ -136,7 +141,7 @@ export default function ProductDetailScreen({ navigation, route }: Props) {
         </View>
     )
 }
- 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -315,4 +320,3 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
 });
- 

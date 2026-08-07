@@ -144,9 +144,9 @@ export const lanches: Product[] = [
     },
 ];
  
-export const fritas: Product[] = [
+export const acompanhamentos: Product[] = [
     {
-        id: 'fritas-1',
+        id: 'acompanhamento-1',
         name: 'Fritas Grande',
         description: 'Batatas fritas crocantes e sequinhas. Vem bastante!',
         about: 'Batatas fritas crocantes e sequinhas. Porção grande, ideal para compartilhar.',
@@ -155,7 +155,7 @@ export const fritas: Product[] = [
         ingredients: ['Batata', 'Óleo vegetal', 'Sal'],
     },
     {
-        id: 'fritas-2',
+        id: 'acompanhamento-2',
         name: 'Fritas Média',
         description: 'Batatas fritas crocantes e sequinhas. Vem bastante!',
         about: 'Batatas fritas crocantes e sequinhas. Porção média, perfeita para um lanche.',
@@ -164,13 +164,22 @@ export const fritas: Product[] = [
         ingredients: ['Batata', 'Óleo vegetal', 'Sal'],
     },
     {
-        id: 'fritas-3',
+        id: 'acompanhamento-3',
         name: 'Fritas Pequena',
         description: 'Batatas fritas crocantes e sequinhas. Vem bastante!',
         about: 'Batatas fritas crocantes e sequinhas. Porção pequena, leve e prática.',
         price: 'R$ 5,90',
         image: require('../images/fritas-pequena.png'),
         ingredients: ['Batata', 'Óleo vegetal', 'Sal'],
+    },
+    {
+        id: 'acompanhamento-4',
+        name: 'Nuggets 6 unidades',
+        description: 'Nuggets crocantes e saborosos para acompanhar seu lanche.',
+        about: 'Nuggets crocantes e saborosos. Uma opção deliciosa para complementar sua refeição.',
+        price: 'R$ 7,90',
+        image: require('../images/nugget.png'),
+        ingredients: ['Frango', 'Farinha de trigo', 'Oleo vegetal', 'Temperos'],
     },
 ];
  
@@ -202,13 +211,54 @@ export const bebidas: Product[] = [
         image: require('../images/agua.png'),
         ingredients: ['Água mineral natural'],
     },
+      {
+        id: 'bebida-4',
+        name: 'Suco Del Valle',
+        description: 'Suco de frutas naturais para acompanhar seu lanche.',
+        about: 'Suco de frutas naturais. Refrescante e nutritivo.',
+        price: 'R$ 5,90',
+        image: require('../images/sucos-del-valle.png'),
+        ingredients: ['Suco de frutas naturais'],
+    },
+];
+
+
+export const Sobremesas: Product[] = [
+    {
+        id: 'sobremesa-1',
+        name: 'Casquinha de baunilha',
+        description: 'Casquinha de sorvete para acompanhar seu lanche.',
+        about: 'Casquinha de sorvete. Refrescante e deliciosa.',
+        price: 'R$ 5,90',
+        image: require('../images/casquinha-baunilha.png'),
+        ingredients: ['Massa de sorvete', 'Cobertura'],
+    },
+    {
+        id: 'sobremesa-2',
+        name: 'Casquinha de chocolate',
+        description: 'Casquinha de sorvete para acompanhar seu lanche.',
+        about: 'Casquinha de sorvete. Refrescante e deliciosa.',
+        price: 'R$ 5,90',
+        image: require('../images/casquinha-chocolate.png'),
+        ingredients: ['Massa de sorvete', 'Cobertura'],
+    },
+    {
+        id: 'sobremesa-3',
+        name: 'Casquinha Mista',
+        description: 'Casquinha de sorvete para acompanhar seu lanche.',
+        about: 'Casquinha de sorvete. Refrescante e deliciosa.',
+        price: 'R$ 5,90',
+        image: require('../images/casquinha-mista.png'),
+        ingredients: ['Massa de sorvete', 'Cobertura'],
+    },
 ];
  
 const todosOsProdutos: Product[] = [
     ...combos,
     ...lanches,
-    ...fritas,
+    ...acompanhamentos,
     ...bebidas,
+    ...Sobremesas
 ];
  
 export function getProdutos(categoria: string): Product[] {
@@ -217,12 +267,12 @@ export function getProdutos(categoria: string): Product[] {
             return combos;
         case 'Lanches':
             return lanches;
-        case 'Fritas':
-            return fritas;
+        case 'Acompanhamentos':
+            return acompanhamentos;
         case 'Bebidas':
             return bebidas;
         default:
-            return combos;
+            return Sobremesas;
     }
 }
  
